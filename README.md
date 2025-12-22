@@ -71,24 +71,24 @@ python src\evaluation\jitter_showcase.py
 # Compute quantitative Jitter Score
 python src\evaluation\compute_jitter_score.py
 
-# 5. Output 
+### 5. Output 
 
 logs/jitter_showcase.mp4 — 15-sec demo
 logs/jitter_score.json — { "YOLOv8": 38.39, "GhostDet": 34.23 }
 runs/detect/ghostdet_local2/weights/best.pt — trained model
 
 #  Results (KITTI MOT seq 0006, Cars Only)
-| Method |   HOTA      | DetA  | AssA |  Jitter Score  | Sensors  |
-|--------|-----------------|---------------------|-------------|
-| **GhostDet (v1.1) **|	—	|93.90%	|—	|34.23	| Camera only | 
-| **LG-FusionTrack (1)**	|82.79% |	79.49% |	86.84% |	~38.0 |	Camera + LiDAR |
-| **LearnTrack (2)**	| 82.75%	| 79.41%	| 86.84%	| ~38.0	| Camera + LiDAR |
-| **MCTrack (3)**	| 82.75%	| 79.40%	| 86.85%	| ~38.0	| Camera + LiDAR |
+| Method                |   HOTA    |   DetA  |   AssA  |  Jitter Score   |    Sensors     |
+|-----------------------|-----------|---------|---------|-----------------|----------------|
+| **GhostDet (v1.1) **  |	   —	    | 93.90%	|     —	  |     34.23	      | Camera only    | 
+| **LG-FusionTrack (1)**|  82.79%   |	79.49%  |	86.84%  |	   ~38.0        |	Camera + LiDAR |
+| **LearnTrack (2)**	  |  82.75%	  | 79.41%	| 86.84%  |    ~38.0	      | Camera + LiDAR |
+| **MCTrack (3)**	      |  82.75%	  | 79.40%	| 86.85%	|    ~38.0	      | Camera + LiDAR |
 
-
+###
 "GhostDet achieves +14.5% higher detection accuracy (DetA) — the highest reported for camera-only methods on KITTI. "
 
-# Architecture
+# Architecture (Version 2.0)
 GhostDet extends YOLOv8 with a lightweight temporal feature fuser (Version 2.0):
 [t-1] → Backbone → Feature Map ┐
 [t]   → Backbone → Feature Map → Temporal Fuser → YOLO Neck/Head → Stable Boxes
