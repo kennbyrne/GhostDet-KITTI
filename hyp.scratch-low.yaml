@@ -1,0 +1,33 @@
+# hardened for motion blur (seq 0006)
+lr0: 0.001
+lrf: 0.1
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 3.0
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+box: 0.05
+cls: 0.5
+dfl: 1.0
+pose: 0.0
+kobj: 0.1
+label_smoothing: 0.0
+nbs: 64
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4
+degrees: 0.0
+translate: 0.1
+scale: 0.5
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.5
+mosaic: 1.0
+mixup: 0.1
+copy_paste: 0.1
+# MOTION BLUR (critical for seq 0006)
+motion_blur:
+  prob: 0.3
+  kernel_size: [5, 7, 9]
+  angle: [-45, 45]

@@ -1,0 +1,5 @@
+path: ./data/kitti_yolo_v1.1_clean
+train: images/val
+val: images/val
+nc: 4
+names: ['car', 'truck', 'pedestrian', 'cyclist']
