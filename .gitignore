@@ -1,0 +1,99 @@
+@"
+# ===== Python =====
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Append the pattern to the .gitignore file
+@"
+# Ignore problematic directory with trailing space
+docs/Training_Data_Flow_Current /
+"@ | Add-Content -Path ".gitignore" -Encoding UTF8
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pyd
+.DLL
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ML/AI specific
+runs/
+logs/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.engine
+*.safetensors
+
+# Video/image outputs
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.gif
+
+# Data (local paths)
+E:/
+data/kitti_yolo_v1.1_clean/
+data/kitti_yolo/
+
+# Large files (prevents accidental commit)
+*.bin
+*.dll
+*.dylib
+*.exe
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# KITTI paths (prevents accidental inclusion)
+E:/KITTI/
+_temp_extract/
+
+# Ultralytics outputs
+runs/
+results.txt
+results.csv
+results.png
+labels.jpg
+train_batch*.jpg
+val_batch*.jpg
+val_batch*_pred.jpg
+val_batch*_labels.jpg
+
+# TrackEval (if cloned)
+tools/TrackEval/data/
+"@ | Set-Content -Path ".gitignore" -Encoding UTF8
