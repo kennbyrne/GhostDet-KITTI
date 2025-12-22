@@ -13,8 +13,11 @@ GhostDet here does not refer to GhostNet or model compression. The name reflects
 [LearnTrack #2](https://www.cvlibs.net/datasets/kitti/eval_tracking.php) and 
 [MCTrack #3](https://www.cvlibs.net/datasets/kitti/eval_tracking.php).
 
- https://github.com/kennbyrne/GhostDeet-KITTI/
+CODE
+https://github.com/kennbyrne/GhostDeet-KITTI/
 
+Demo
+https://github.com/user-attachments/assets/5ab0c416-dcb4-4694-9761-3975567e889d
 ---
 
 ## Why GhostDet?
@@ -115,4 +118,5 @@ If you use GhostDet in your work, please cite:
   year = {2025},
   howpublished = {\url{https://github.com/kennbyrne/GhostDet-KITTI}}
 }
+
  
