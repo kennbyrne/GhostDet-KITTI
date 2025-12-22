@@ -1,4 +1,4 @@
-#  GhostDet: Motion-Stabilized Object Detection for KITTI MOT
+#  GhostDet: Camera-Only Detection Stabilization for Autonomous Driving
 
 
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue)](https://www.python.org/)
