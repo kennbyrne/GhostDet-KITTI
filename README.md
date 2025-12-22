@@ -16,9 +16,6 @@ GhostDet here does not refer to GhostNet or model compression. The name reflects
 CODE
 https://github.com/kennbyrne/GhostDeet-KITTI/
 
-Demo
-https://github.com/user-attachments/assets/5ab0c416-dcb4-4694-9761-3975567e889d
----
 
 ## Why GhostDet?
 
@@ -74,6 +71,8 @@ python src\evaluation\jitter_showcase.py
 # Compute quantitative Jitter Score
 python src\evaluation\compute_jitter_score.py
 
+```powershell
+
 ### 5. Output 
 
 logs/jitter_showcase.mp4 — 15-sec demo
@@ -120,3 +119,4 @@ If you use GhostDet in your work, please cite:
 }
 
  
+
