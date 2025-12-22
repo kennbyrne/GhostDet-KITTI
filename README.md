@@ -70,7 +70,7 @@ python src\evaluation\jitter_showcase.py
 
 # Compute quantitative Jitter Score
 python src\evaluation\compute_jitter_score.py
-'''
+````
 
 ### 5. Output 
 
@@ -118,5 +118,6 @@ If you use GhostDet in your work, please cite:
 }
 
  
+
 
 
