@@ -1,0 +1,13 @@
+# KITTI MOT (not detection!)
+Kitti:
+  # External drive — update if drive letter changes
+    root: "E:/KITTI/tracking"
+    train_seqs: ["00", "01", "02"]   # 21 official train seqs exist; you use 3
+    val_seq: "06"                    # common validation choice
+    label_format: "tracking"         # 17-field: track_id + 2D box + 3D attr
+    task: "MOT (detector stage)"
+
+output:
+  yolo_root: "data/kitti_yolo"
+
+
