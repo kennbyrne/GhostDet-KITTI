@@ -1,6 +1,6 @@
 # GhostDet Versioning History & Development Log
 
-## 📋 Overview
+##  Overview
 
 This document tracks the evolution of GhostDet from initial development to SOTA results, including version changes, key achievements, and development practices.
 
