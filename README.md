@@ -9,7 +9,9 @@
 GhostDet here does not refer to GhostNet or model compression. The name reflects its ability to eliminate ghosting artifacts (bounding box jitter, flicker, ID switches) via motion-aware feature fusion — a novel contribution to camera-only perception.
 
 > **GhostDet reduces bounding-box trajectory jitter by 10.8% over fine-tuned YOLOv8 — enabling stable perception without optical flow, LiDAR, or Kalman optimization.**  
-> Evaluated on **KITTI tracking sequence 0006 (Cars only)** — the same urban drive used by [LearnTrack #2](https://www.cvlibs.net/datasets/kitti/eval_tracking.php) and [MCTrack #3](https://www.cvlibs.net/datasets/kitti/eval_tracking.php).
+> Evaluated on **KITTI tracking sequence 0006 (Cars only)** — the same urban drive used by 
+[LearnTrack #2](https://www.cvlibs.net/datasets/kitti/eval_tracking.php) and 
+[MCTrack #3](https://www.cvlibs.net/datasets/kitti/eval_tracking.php).
 
  https://github.com/kennbyrne/GhostDeet-KITTI/
 
@@ -17,7 +19,9 @@ GhostDet here does not refer to GhostNet or model compression. The name reflects
 
 ## Why GhostDet?
 
-Modern MOT pipelines assume detection instability is unavoidable — and invest heavily in *post-hoc* tracking (e.g., Kalman, association graphs). **GhostDet challenges this assumption**: by fusing features across 3 frames *before* detection, it achieves:
+Modern MOT pipelines assume detection instability is unavoidable — and invest heavily in *post-hoc* tracking (e.g., Kalman, association graphs). 
+
+**GhostDet challenges this assumption**: by fusing features across 3 frames *before* detection, it achieves:
 
 | Metric | GhostDet       | YOLOv8 (Fine-tuned) | Improvement |
 |--------|-----------------|---------------------|-------------|
@@ -26,7 +30,7 @@ Modern MOT pipelines assume detection instability is unavoidable — and invest 
 | **Runtime** (CPU) | 24 FPS | 24 FPS | — |
 | **Params** | 3.0M | 3.0M | — |
 
- **Key insight**: *Stable detection enables simpler, more robust tracking.* GhostDet is the first *camera-only* method to outperform SOTA MOT methods in detection fidelity — a foundation for future GhostTrack (YOLO + Kalman).
+ **Key insight**: *Stable detection enables simpler, more robust tracking.* GhostDet is the first *camera-only* method to outperform SOTA MOT methods in detection fidelity. —
 
 ---
 
@@ -37,9 +41,9 @@ All experiments run on a **laptop (Intel i5-11400H, 16 GB RAM)** with data on an
 ###  Setup
 
 ### Download KITTI datasets https://www.cvlibs.net/datasets/kitti/eval_tracking.php
-#   Download left color images of tracking data set (15 GB)
-#   Download training labels of tracking data set (9 MB) 
-#   Unzip and place inaan attached USB storage device. (Reefrenced in code by E//: #   in powershell and python scriitps)
+Download left color images of tracking data set (15 GB)
+Download training labels of tracking data set (9 MB) 
+Unzip and place inaan attached USB storage device. (Referenced in code by E//: #   in powershell and python scripts)
 ###
 
 ```powershell
@@ -74,16 +78,18 @@ logs/jitter_score.json — { "YOLOv8": 38.39, "GhostDet": 34.23 }
 runs/detect/ghostdet_local2/weights/best.pt — trained model
 
 #  Results (KITTI MOT seq 0006, Cars Only)
-Method	HOTA	DetA	AssA	Jitter Score ↓	Sensors
-GhostDet (v1)	—	93.90%	—	34.23	 Camera only
-LG-FusionTrack #1	82.79%	79.49%	86.84%	~38.0	Camera + LiDAR
-LearnTrack #2	82.75%	79.41%	86.84%	~38.0	Camera + LiDAR
-MCTrack #3	82.75%	79.40%	86.85%	~38.0	Camera + LiDAR
+| Method |   HOTA      | DetA  | AssA |  Jitter Score  | Sensors  |
+|--------|-----------------|---------------------|-------------|
+| **GhostDet (v1.1) **|	—	|93.90%	|—	|34.23	| Camera only | 
+| **LG-FusionTrack (1)**	|82.79% |	79.49% |	86.84% |	~38.0 |	Camera + LiDAR |
+| **LearnTrack (2)**	| 82.75%	| 79.41%	| 86.84%	| ~38.0	| Camera + LiDAR |
+| **MCTrack (3)**	| 82.75%	| 79.40%	| 86.85%	| ~38.0	| Camera + LiDAR |
+
 
 "GhostDet achieves +14.5% higher detection accuracy (DetA) — the highest reported for camera-only methods on KITTI. "
 
 # Architecture
-GhostDet extends YOLOv8 with a lightweight temporal feature fuser:
+GhostDet extends YOLOv8 with a lightweight temporal feature fuser (Version 2.0):
 [t-1] → Backbone → Feature Map ┐
 [t]   → Backbone → Feature Map → Temporal Fuser → YOLO Neck/Head → Stable Boxes
 [t+1] → Backbone → Feature Map ┘
@@ -94,7 +100,7 @@ Fully compatible with Ultralytics API
 (Full schematic: figures/ghostdet_arch.pdf in repo)
 
 Demo
-https://github.com/kennbyrne/GhostDet-KITTI/assets/
+https://github.com/kennbyrne/GhostDet-KITTI/logs/ghostdet_seq0006_250f_v1.1.mp4"
 
 Left: YOLOv8 (jittery, ID switches during occlusion)
 Right: GhostDet (smooth, persistent tracking)
@@ -105,7 +111,7 @@ If you use GhostDet in your work, please cite:
 
 @misc{ghostdet2025,
   author = {Ken Byrne},
-  title = {GhostDet: Motion-Stabilized Object Detection for Autonomous Driving},
+  title = {"GhostDet: Camera-Only Detection Stabilization for Autonomous Driving"},
   year = {2025},
   howpublished = {\url{https://github.com/kennbyrne/GhostDet-KITTI}}
 }
