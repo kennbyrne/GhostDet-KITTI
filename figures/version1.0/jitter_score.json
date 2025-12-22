@@ -1,0 +1,8 @@
+{
+  "YOLOv8_fine_tuned": 38.38966662702726,
+  "GhostDet_temporal": 34.2314586761298,
+  "improvement_percent": 10.831581298416339,
+  "frames_processed": 50,
+  "yolo_car_detections": 11,
+  "ghost_car_detections": 9
+}

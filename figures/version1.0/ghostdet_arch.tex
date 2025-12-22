@@ -1,0 +1,59 @@
+% ghostdet_arch.tex — Compile with pdflatex or Overleaf
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, fit, backgrounds}
+
+\definecolor{ghostgreen}{RGB}{46,204,113}
+\definecolor{yolored}{RGB}{231,76,60}
+\definecolor{fuserblue}{RGB}{52,152,219}
+
+\begin{document}
+\begin{tikzpicture}[
+    block/.style={rectangle, draw, thick, minimum width=2.4cm, minimum height=1.0cm, align=center, font=\small},
+    fuser/.style={block, fill=fuserblue!20, draw=fuserblue, rounded corners},
+    backbone/.style={block, fill=gray!10, draw=black},
+    arrow/.style={-{Stealth[length=3mm]}, thick}
+]
+
+% Frames
+\node[block, fill=yolored!20, draw=yolored] (frame_t-1) {Frame $t-1$};
+\node[block, fill=yolored!20, draw=yolored, right=0.8cm of frame_t-1] (frame_t) {Frame $t$};
+\node[block, fill=yolored!20, draw=yolored, right=0.8cm of frame_t] (frame_t+1) {Frame $t+1$};
+
+% Backbones
+\node[backbone, below=0.8cm of frame_t-1] (backbone_t-1) {Backbone\\(YOLOv8n)};
+\node[backbone, below=0.8cm of frame_t] (backbone_t) {Backbone\\(YOLOv8n)};
+\node[backbone, below=0.8cm of frame_t+1] (backbone_t+1) {Backbone\\(YOLOv8n)};
+
+% Feature Maps
+\node[draw, rectangle, dashed, fit=(backbone_t-1) (backbone_t+1), inner sep=6pt, label=above:\footnotesize Feature Maps $P_3, P_4, P_5$] (features) {};
+
+% Temporal Fuser
+\node[fuser, below=0.8cm of backbone_t] (fuser) {Temporal\\Feature Fuser\\(Deformable Attention)};
+
+% Connections
+\draw[arrow] (frame_t-1) -- (backbone_t-1);
+\draw[arrow] (frame_t) -- (backbone_t);
+\draw[arrow] (frame_t+1) -- (backbone_t+1);
+\draw[arrow] (backbone_t-1) -- (fuser);
+\draw[arrow] (backbone_t) -- (fuser);
+\draw[arrow] (backbone_t+1) -- (fuser);
+
+% YOLO Head
+\node[block, fill=ghostgreen!20, draw=ghostgreen, below=0.8cm of fuser] (head) {YOLOv8\\Neck + Head};
+
+\draw[arrow] (fuser) -- (head);
+\node[below=0.2cm of head, align=center, font=\footnotesize\color{ghostgreen!80!black}] (output) {Stable Boxes\\(↓ Jitter, ↑ Track Continuity)};
+
+% Legend
+\node[anchor=north west, yshift=-1.2cm, xshift=0.5cm] at (current bounding box.south west) {
+    \begin{tabular}{ll}
+        \textcolor{yolored}{\rule{1em}{1em}} Input Frames & 
+        \textcolor{fuserblue}{\rule{1em}{1em}} Temporal Fuser \\
+        \textcolor{black}{\rule{1em}{1em}} Backbone & 
+        \textcolor{ghostgreen}{\rule{1em}{1em}} Detection Head \\
+    \end{tabular}
+};
+
+\end{tikzpicture}
+\end{document}
