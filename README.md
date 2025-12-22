@@ -16,13 +16,17 @@ GhostDet here does not refer to GhostNet or model compression. The name reflects
 CODE
 https://github.com/kennbyrne/GhostDeet-KITTI/
 
-https://github.com/user-attachments/assets/0bea4962-ac18-4da9-a431-670339972180
 
-## Why GhostDet?
+
+
+
+https://github.com/user-attachments/assets/e36719bd-2d1f-452e-82cb-4b15e83695c3
+
 
 
  
 
+## Why GhostDet?
 
 Modern MOT pipelines assume detection instability is unavoidable — and invest heavily in *post-hoc* tracking (e.g., Kalman, association graphs). 
 
@@ -123,6 +127,7 @@ If you use GhostDet in your work, please cite:
 }
 
  
+
 
 
 
