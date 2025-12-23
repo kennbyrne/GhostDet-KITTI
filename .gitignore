@@ -6,19 +6,11 @@ venv/
 env/
 ENV/
 
-# Append the pattern to the .gitignore file
-@"
-# Ignore problematic directory with trailing space
-docs/Training_Data_Flow_Current /
-"@ | Add-Content -Path ".gitignore" -Encoding UTF8
-
 # Python cache
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
-.pyd
-.DLL
 .Python
 build/
 develop-eggs/
@@ -83,8 +75,7 @@ data/kitti_yolo/
 E:/KITTI/
 _temp_extract/
 
-# Ultralytics outputs
-runs/
+# Ultralytics outputs (if not already covered by 'runs/')
 results.txt
 results.csv
 results.png
@@ -94,6 +85,6 @@ val_batch*.jpg
 val_batch*_pred.jpg
 val_batch*_labels.jpg
 
-# TrackEval (if cloned)
+# TrackEval (if cloned separately later)
 tools/TrackEval/data/
 "@ | Set-Content -Path ".gitignore" -Encoding UTF8
